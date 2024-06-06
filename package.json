@@ -78,7 +78,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-share": "*"
   },
   "workspaces": [
     "example"
@@ -156,5 +157,10 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "react-native-fs": "^2.20.0",
+    "react-native-share": "^10.2.1"
   }
 }
