@@ -1,31 +1,33 @@
 # react-native-logfile-share
 
-React Native logger in a file to share logs
+A biblioteca `react-native-logfile-share` é uma solução simples para gerenciar logs em aplicativos React Native e compartilhá-los facilmente.
 
-## Installation
+## Instalação
 
-```sh
+Para instalar a `react-native-logfile-share`, você pode usar o npm ou o yarn.
+
+### npm
+
+```bash
 npm install react-native-logfile-share
 ```
 
-## Usage
+### yarn
 
-```js
-import { multiply } from 'react-native-logfile-share';
-
-// ...
-
-const result = await multiply(3, 7);
+```bash
+yarn add react-native-logfile-share
 ```
 
-## Contributing
+```javascript
+import LogFileShare from 'react-native-logfile-share';
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+// Escrever um log
+LogFileShare.writeLog('Mensagem de log', 'Label');
 
-## License
 
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+// Compartilhar logs
+<Button
+    title="Compartilhar Logs"
+    onPress={LogFileShare.handleShareLogs();}
+/>
+```
