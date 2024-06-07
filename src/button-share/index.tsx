@@ -1,19 +1,25 @@
-import { Platform } from 'react-native';
 import Share from 'react-native-share';
-import LogFile from '../logs';
-
+import LogFile from '../logs'; // Certifique-se de ajustar o caminho para o seu módulo de log
+import RNFS from 'react-native-fs';
 const handleShareLogs = async () => {
   try {
-    const logFilePath = LogFile.getLogFilePath();
-    const logFileUri =
-      Platform.OS === 'ios' ? logFilePath : `file://${logFilePath}`;
+    const encryptedLogFilePath = await LogFile.encryptLogFile();
+
+    // Verifica se o arquivo existe
+    const fileExists = await RNFS.exists(encryptedLogFilePath);
+    if (!fileExists) {
+      console.error(
+        `Error: Log file does not exist at path: ${encryptedLogFilePath}`
+      );
+      return;
+    }
+
     const options = {
-      url: logFileUri,
-      type: 'text/plain', // Tipo de arquivo a ser compartilhado
-      title: 'Compartilhar Logs',
-      message: 'logs',
+      type: 'application/octet-stream',
+      url: `file://${encryptedLogFilePath}`,
     };
 
+    // Tente compartilhar o arquivo
     await Share.open(options);
   } catch (error) {
     console.error(`\x1b[31mError sharing log file: ${error}\x1b[0m`);

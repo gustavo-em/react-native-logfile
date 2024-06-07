@@ -1,6 +1,6 @@
 {
   "name": "react-native-logfile-share",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "React Native logger in a file to share logs",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -159,7 +159,8 @@
     ]
   },
   "dependencies": {
-    "chalk": "^5.3.0",
+    "@types/crypto-js": "^4.2.2",
+    "crypto-js": "^4.2.0",
     "react-native-fs": "^2.20.0",
     "react-native-share": "^10.2.1"
   }
